@@ -18,15 +18,17 @@ This is ALPHA software. This utility issues `git branch -d` and even `git branch
 `git-cleanup --help` will give you
 
 ````
-Usage: git-cleanup [options]
+ Usage: git-cleanup [options]
 
   Options:
 
-    -h, --help           output usage information
-    -V, --version        output the version number
-    -p, --path [path]    path to where to execute git (default: __dirname)
-    -r, --remote [name]  use remote named (default: use local branches)
-    -o, --origin         use origin (same as --remote="origin")
-    -b, --both           use both origin and local at the same time (default: use local branches)
-    -t, --target [name]  the name of the target branch that is checked (default: master)
+    -h, --help            output usage information
+    -V, --version         output the version number
+    -p, --path [path]     path to where to execute git (default: __dirname)
+    -r, --remote [name]   use remote named (default: use local branches)
+    -o, --origin          use origin (same as --remote="origin")
+    -b, --both            use both origin and local at the same time (default: use local branches)
+    -t, --target [name]   the name of the target branch that is checked (default: master)
+    -e, --emulate         do all checks but don't really delete the branches (will only output messages)
+    -b, --prefix [regex]  only delete branches matching this regex
 ````
