@@ -14,7 +14,7 @@ program
     .option('-b, --both','use both origin and local at the same time (default: use local branches)')
     .option('-t, --target [name]','the name of the target branch that is checked (default: master)')
     .option('-e, --emulate','do all checks but don\'t really delete the branches (will only output messages)')
-    .option('-b, --prefix','only delete branches matching this regex')
+    .option('-b, --prefix [regex]','only delete branches matching this regex')
     .parse(process.argv);
 program.path = program.path || process.cwd();
 program.remote = program.remote || 'origin';
