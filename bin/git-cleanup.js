@@ -6,13 +6,14 @@ var moment = require('moment');
 var async = require('async');
 
 program
-    .version('0.0.1')
+    .version('0.0.3')
     .usage('[options]')
     .option('-p, --path [path]','path to where to execute git (default: __dirname)')
     .option('-r, --remote [name]','use remote named (default: use local branches)')
     .option('-o, --origin','use origin (same as --remote="origin")')
     .option('-b, --both','use both origin and local at the same time (default: use local branches)')
     .option('-t, --target [name]','the name of the target branch that is checked (default: master)')
+    .option('-e, --emulate','do all checks but don\'t really delete the branches (will only output messages)')
     .parse(process.argv);
 program.path = program.path || __dirname;
 program.remote = program.remote || 'origin';
@@ -26,6 +27,9 @@ if (program.origin) {
 if (program.both) {
   useOrigin = true;
   useLocal = true;
+}
+if (program.emulate) {
+  console.log("emulation mode");
 }
 process.chdir(program.path);
 if (useLocal) {
@@ -126,12 +130,16 @@ function doJob(prefix, remote) {
 
   function deleteBranch(name, remote) {
     var cmdDelete = 'git branch -d '+(remote?'-r ':'')+name;
-    console.log('going to delete branch "'+name+'"'+(remote?' remotely':''));
-    exec(cmdDelete, function (error, stdout, stderr) {
-      if (error) {
-        console.log('failed to delete '+name);
-      }
-    });
+    if (program.emulate) {
+      console.log('would delete branch "'+name+'"'+(remote?' in remote '+remote:''));
+    } else {
+      console.log('going to delete branch "'+name+'"'+(remote?' in remote '+remote:''));
+      exec(cmdDelete, function (error, stdout, stderr) {
+        if (error) {
+          console.log('failed to delete '+name);
+        }
+      });
+    }
   }
 }
 
