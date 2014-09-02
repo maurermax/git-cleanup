@@ -1,0 +1,29 @@
+{
+  "name": "git-cleanup",
+  "version": "0.0.1",
+  "description": "A node-based command line utility to cleanup git repositories in a safe fashion. Time- and Merge-based.",
+  "main": "./bin/git-cleanup",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "git",
+    "branch",
+    "delete",
+    "old"
+  ],
+  "bin": {
+    "git-cleanup": "./bin/git-cleanup"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/maurermax/git-cleanup.git"
+  },
+  "author": "Max Maurer <maxemanuel.maurer@gmail.com> (http://www.max-maurer.de)",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^0.9.0",
+    "commander": "^2.3.0",
+    "moment": "^2.8.2"
+  }
+}
