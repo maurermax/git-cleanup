@@ -14,8 +14,9 @@ program
     .option('-b, --both','use both origin and local at the same time (default: use local branches)')
     .option('-t, --target [name]','the name of the target branch that is checked (default: master)')
     .option('-e, --emulate','do all checks but don\'t really delete the branches (will only output messages)')
+    .option('-b, --prefix','only delete branches matching this regex')
     .parse(process.argv);
-program.path = program.path || __dirname;
+program.path = program.path || process.cwd();
 program.remote = program.remote || 'origin';
 program.target = program.target || 'master';
 var useLocal = true;
@@ -66,6 +67,7 @@ function doJob(prefix, remote) {
             var name = vals[0].substr(fullPath.length);
             var obj = {prefix: prefix, remote: remote, name: name, lastModified: moment(new Date(vals[1])), author: vals[2]};
             if (name===program.target) continue;
+            if (program.prefix && !((new RegExp(program.prefix)).test(name))) continue;
             branches[name] = obj;
           }
           return branches;
@@ -95,6 +97,7 @@ function doJob(prefix, remote) {
               name = name.substr(remote.length);
             }
             if (name===program.target) continue;
+            if (program.prefix && !((new RegExp(program.prefix)).test(name))) continue;
             branches[name] = 1;
           }
           return branches;
