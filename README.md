@@ -5,16 +5,16 @@ A node-based command line utility to cleanup git repositories in a safe fashion.
 
 This utility will help you to delete your git branches (local and remote ones) that are already merged into a target branch and that have not been touched for at least two weeks.
 
-= Careful! =
+## Careful!
 This is ALPHA software. This utility issues `git branch -d` and even `git branch -r -d` commands and can delete remote as well as local branches. It has not been tested to the fullest. So make sure you would be able to restore your work! We are not responsible for any loss of data in your repos.
 
-= How to use? =
-# `npm install -g git-cleanup`
-# Go to the repo where you want to cleanup.
-# issue a `git-cleanup`
-# everything local is gone
+## How to use?
+1. `npm install -g git-cleanup`
+1. Go to the repo where you want to cleanup.
+1. issue a `git-cleanup`
+1. everything local is gone
 
-== Options ==
+### Options
 `git-cleanup --help` will give you
 
 ````
