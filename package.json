@@ -1,8 +1,8 @@
 {
   "name": "git-cleanup",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A node-based command line utility to cleanup git repositories in a safe fashion. Time- and Merge-based.",
-  "main": "./bin/git-cleanup",
+  "main": "./bin/git-cleanup.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +13,7 @@
     "old"
   ],
   "bin": {
-    "git-cleanup": "./bin/git-cleanup"
+    "git-cleanup": "./bin/git-cleanup.js"
   },
   "repository" : {
     "type" : "git",
