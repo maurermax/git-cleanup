@@ -12,7 +12,7 @@ program
     .option('-r, --remote [name]','use remote named (default: use local branches)')
     .option('-o, --origin','use origin (same as --remote="origin")')
     .option('-b, --both','use both origin and local at the same time (default: use local branches)')
-    .option('-t, --target','the name of the target branch that is checked (default: master)')
+    .option('-t, --target [name]','the name of the target branch that is checked (default: master)')
     .parse(process.argv);
 program.path = program.path || __dirname;
 program.remote = program.remote || 'origin';
