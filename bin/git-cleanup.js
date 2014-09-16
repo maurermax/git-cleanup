@@ -132,7 +132,7 @@ function doJob(prefix, remote) {
   });
 
   function deleteBranch(name, remote) {
-    var cmdDelete = 'git branch -d '+(remote?'-r ':'')+name;
+    var cmdDelete = 'git branch -d '+(remote?'-r '+remote+'/':'')+name;
     if (program.emulate) {
       console.log('would delete branch "'+name+'"'+(remote?' in remote '+remote:''));
     } else {
