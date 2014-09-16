@@ -137,6 +137,7 @@ function doJob(prefix, remote) {
       console.log('would delete branch "'+name+'"'+(remote?' in remote '+remote:''));
     } else {
       console.log('going to delete branch "'+name+'"'+(remote?' in remote '+remote:''));
+      console.log('going to issue the following command: '+cmdDelete);
       exec(cmdDelete, function (error, stdout, stderr) {
         if (error) {
           console.log('failed to delete '+name);
